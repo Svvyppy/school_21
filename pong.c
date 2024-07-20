@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define width 80;
 #define heigh 21;
@@ -46,7 +47,54 @@ void ball_move() {
   }
 }
 
-void ball_change_dir() {}
+void ball_change_dir() {
+    if(ball.x == rocket.left_y) {
+        switch (ball.dir)
+        {
+            case 1:
+                ball.dir = 6;
+                break;
+            case 2:
+                ball.dir = rand()%3+4;
+                break;
+            case 3:
+                ball.dir = 4;
+                break;
+        }
+    }
+    if(ball.x == rocket_right){
+        switch (ball.dir)
+        {
+            case 6:
+                ball.dir = 1;
+                break;
+            case 4:
+                ball.dir = rand()%3;
+                break;
+            case 5:
+                ball.dir = 4;
+                break;
+        }
+
+    }
+    if (ball.y == 0 || ball.y == 80){
+        switch (ball.dir)
+        {
+        case 1:
+            ball.dir = 3;
+            break;
+        case 3:
+            ball.dir = 1;
+            break;
+        case 4:
+            ball.dir = 6;
+            break;
+        case 6:
+            ball.dir = 4;
+            break;
+        }
+    }
+}
 
 void rocket_left(int a) {
 
